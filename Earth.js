@@ -15,8 +15,10 @@ const loader = new GLTFLoader();
 loader.load('Planets/Earth/scene.gltf', function (gltf) {
     const earth = gltf.scene;
     scene.add(earth);
+    
     console.log("Loaded Earth:", earth); // Inspect the loaded scene
-
+    document.getElementById('load').style.display= 'none'
+    
     //Adjust the earth scale and position.
     earth.scale.set(1, 1, 1); // Change from 0.01 to 1);
     earth.position.set(0,0,0);
