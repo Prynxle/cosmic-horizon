@@ -10,6 +10,11 @@ renderer.setClearColor(0x000000, 0); // Transparent background
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 
+
+// slide
+
+
+
 // Load the Earth model
 const loader = new GLTFLoader();
 loader.load('Planets/Earth/scene.gltf', function (gltf) {
@@ -23,6 +28,20 @@ loader.load('Planets/Earth/scene.gltf', function (gltf) {
     earth.scale.set(1, 1, 1); // Change from 0.01 to 1);
     earth.position.set(0,0,0);
 });
+
+// Load Sun
+const sunloader = new GLTFLoader();
+sunloader.load('Planets/Sun/scene.gltf', function (gltf) {
+    const earth = gltf.scene;
+    scene.add(earth);
+
+    //Adjust the earth scale and position.
+    earth.scale.set(0.7, 0.7, 0.7); // Change from 0.01 to 1);
+    earth.position.set(1,1,1);
+});
+
+
+
 
 // Add lighting
 const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
