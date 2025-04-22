@@ -19,7 +19,7 @@ camera.position.setZ(30);
 
 
 
-//load
+//load Earth
 
 const earthTexture = new THREE.TextureLoader().load('Planets/Earth/textures/TERRE_baseColor.jpeg');
 const normalTexture = new THREE.TextureLoader().load('Planets/Earth/textures/NUAGES_baseColor.png');
@@ -28,6 +28,25 @@ const material = new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,
 });
+
+//load Sun
+
+
+
+
+
+//star
+function addStar(){
+    const geometry = new THREE.SphereGeometry(0.24, 24 , 24);
+    const material = new THREE.MeshStandardMaterial( {color: 0xffffff} );
+    const star = new THREE.Mesh(geometry, material);
+    const [x,y,z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(100));
+
+    star.position.set(x,y,z);
+    scene.add(star);
+}
+Array(200).fill().forEach(addStar);
+
 
 
 const planet = new THREE.Mesh(geometry, material);

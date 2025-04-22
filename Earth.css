@@ -13,6 +13,10 @@ body {
     z-index: 1;
     pointer-events: none;
 }
+canvas{
+    width: 500px;
+    height: 200px;
+}
 #button-container {
     position: fixed; top: 20px; left: 20px; z-index: 2;
 }

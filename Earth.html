@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="background.css"> -->
     <link rel="stylesheet" href="Earth.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+          }
+        }
+    </script>
     <title>3D Earth</title>
 </head>
 <body>
@@ -19,8 +27,13 @@
             <button id="back">Go Back..</button>
         </a>
     </div>
+    <div id="button">
+        <input type="button" value="">
+    </div>
     <div id="canvas-container"></div>
     <div id="load"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="module" src="Earth.js"></script>
 </body>
 </html>

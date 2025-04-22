@@ -30,15 +30,15 @@ loader.load('Planets/Earth/scene.gltf', function (gltf) {
 });
 
 // Load Sun
-const sunloader = new GLTFLoader();
-sunloader.load('Planets/Sun/scene.gltf', function (gltf) {
-    const earth = gltf.scene;
-    scene.add(earth);
+// const sunloader = new GLTFLoader();
+// sunloader.load('Planets/Sun/scene.gltf', function (gltf) {
+//     const earth = gltf.scene;
+//     scene.add(earth);
 
-    //Adjust the earth scale and position.
-    earth.scale.set(0.7, 0.7, 0.7); // Change from 0.01 to 1);
-    earth.position.set(1,1,1);
-});
+//     //Adjust the earth scale and position.
+//     earth.scale.set(0.7, 0.7, 0.7); // Change from 0.01 to 1);
+//     earth.position.set(1,1,1);
+// });
 
 
 
@@ -68,7 +68,8 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-animate();
+$("#button").click(animate)
+
 
 // Handle window resize
 window.addEventListener('resize', function () {
