@@ -1,17 +1,11 @@
 
-canvas {
+#bg {
     position: fixed;
     top: 0;
     left: 0;
 }
 
-#container {
-    position: absolute;
-    top: 50px;
-    height: 80%;
-    width: 30%;
-    text-align: center;
-    z-index: 100;
-    display:block;
-    background-color: rgb(54, 54, 63);
+main {
+    position: absolute
 }
+
