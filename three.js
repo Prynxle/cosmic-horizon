@@ -17,10 +17,9 @@ camera.position.setY(10);
 camera.zoom = -5; // Set initial zoom level
 
 //load Earth
-
-const earthTexture = new THREE.TextureLoader().load('Planets/Earth/textures/TERRE_baseColor.jpeg');
-const normalTexture = new THREE.TextureLoader().load('Planets/Earth/textures/NUAGES_baseColor.png');
-const earthGeometry = new THREE.SphereGeometry(15, 32, 32);
+const earthTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.001_baseColor.jpeg');
+const normalTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.002_baseColor.jpeg');
+const earthGeometry = new THREE.SphereGeometry(15, 32, 31);
 const earthMat = new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,

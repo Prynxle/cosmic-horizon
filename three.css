@@ -17,6 +17,10 @@ body{
     overflow-x: hidden;
 }
 
+h1 {
+    color: wheat;
+}
+
 .containers {
     position: absolute;
     font-size: 14px;
