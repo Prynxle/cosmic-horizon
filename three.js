@@ -1,13 +1,9 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.128'; // or latest
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.128/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.128/examples/jsm/controls/OrbitControls.js';
-
-
-
 
 // Initialize Three.js components
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(1000, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#bg'),
@@ -15,9 +11,10 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio); 
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-
-
+camera.position.setZ(50);
+camera.position.setX(-10);
+camera.position.setY(10);
+camera.zoom = -5; // Set initial zoom level
 
 //load Earth
 
@@ -36,10 +33,6 @@ const sunMat = new THREE.MeshStandardMaterial({
     map: sunTexture,
 });
 
-
-
-
-
 //star
 function addStar(){
     const geometry = new THREE.SphereGeometry(0.24, 24 , 24);
@@ -52,41 +45,33 @@ function addStar(){
 }
 Array(200).fill().forEach(addStar);
 
-
-
 const earth = new THREE.Mesh(earthGeometry, earthMat);
 scene.add(earth);
 earth.position.set(0, 0, 0); 
-// const sun = new THREE.Mesh(sunGeometry, sunMat);
-// sun.position.setZ(50);
-// sun.position.setX(-10);
-// scene.add(sun);
+const sun = new THREE.Mesh(sunGeometry, sunMat);
+sun.position.setZ(50);
+sun.position.setX(-10);
+scene.add(sun);
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(25, 25, 25);
 
-
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
-
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
     earth.rotation.x += 0.05;
     earth.rotation.y += 0.075;
-    sun.rotation.y += 0.01;
-    camera.position.z = t * -0.70;
-    
+    sun.rotation.y += 0.01; // Ensure the Sun exists before rotating
+    camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
+    camera.position.x = -10 + t * -0.02;
+    camera.position.y = 10 + t * -0.02;
 }
 
 document.body.onscroll = moveCamera;
 
-// control the spin
-const controller = new OrbitControls(camera, renderer.domElement);
-
-
 console.log(camera)
-
 
 // Responsive
 window.addEventListener('resize', () => {
@@ -100,13 +85,30 @@ window.addEventListener('resize', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
 });
 
-
 function animate() {
     requestAnimationFrame(animate);
-
-    controller.update(); 
 
     renderer.render(scene, camera);
 }
 
-animate()
+animate();
+
+
+
+
+
+
+
+
+
+
+//js
+$(window).scroll()
+
+function transform(section) {
+    const offset = window.pageYOffset;
+}
+
+
+
+
