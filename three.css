@@ -20,33 +20,41 @@ h1{
     left: 50%;
     transform: translate(1030%, 200%);
 }
-
-#earth_desc-left, #earth_desc-right, #earth_desc-right2 {
+.containers {
     position: absolute;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.earth_desc-left {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+}
+
+.earth_desc-right {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+}
+
+#quadrant_1A, #quadrant_2A, #quadrant_3B {
     color: white;
     width: 300px;
     padding: 20px;
     background: rgba(231, 9, 9, 0.7);
     border-radius: 10px;
-    font-size: 14px;
-    line-height: 1.5;
+    margin-bottom: 20px;
 }
 
-#earth_desc-left {
-    top: 800%;
-    left: 20%;
-        transform: translate(1030%, 200%);
+#quadrant_1A {
+    transform: translate(20%, 60%);
 }
 
-#earth_desc-right {
-    top: 800%;
-    left: 20%;
-    transform: translate(40%, 200%);
+#quadrant_2A {
+    transform: translate(20%, 80%);
 }
 
-#earth_desc-right2 {
-    top: 800%;
-    left: 20%;
-    transform: translate(40%, 70%);
+#quadrant_3B {
+    transform: translate(0, 0);
 }
 
