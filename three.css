@@ -11,33 +11,25 @@ canvas {
 }
 
 main {
-    position:absolute
+    position: absolute;    
 }
-h1{
-    color: white;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(1030%, 200%);
+body{
+    overflow-x: hidden;
 }
+
 .containers {
     position: absolute;
     font-size: 14px;
     line-height: 1.5;
 }
-.earth_desc-left {
-    position: absolute;
-    top: 20%;
-    left: 5%;
+
+.planets {
+    overflow: scroll;
+    height: 100vh;
+    width: 100vw;
 }
 
-.earth_desc-right {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-}
-
-#quadrant_1A, #quadrant_2A, #quadrant_3B {
+#quadrant_1A, #quadrant_2A, #quadrant_3A {
     color: white;
     width: 300px;
     padding: 20px;
@@ -47,14 +39,21 @@ h1{
 }
 
 #quadrant_1A {
-    transform: translate(20%, 60%);
+    position: relative;
+    top: 10%;
+    left: 10%;
 }
-
 #quadrant_2A {
-    transform: translate(20%, 80%);
+    position: relative;
+    top: 10%;
+    left: 10%;
 }
 
-#quadrant_3B {
-    transform: translate(0, 0);
+#quadrant_3A {
+    position: relative;
+    top: 10%;
+    left: 250%;
 }
+
+
 

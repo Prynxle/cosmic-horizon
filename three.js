@@ -47,10 +47,9 @@ Array(200).fill().forEach(addStar);
 
 const earth = new THREE.Mesh(earthGeometry, earthMat);
 scene.add(earth);
-earth.position.set(0, 0, 0); 
+earth.position.set(-10, 10, 15); 
 const sun = new THREE.Mesh(sunGeometry, sunMat);
-sun.position.setZ(50);
-sun.position.setX(-10);
+sun.position.set(9, 29, 85); // Set the Sun's position to the center of the scene
 scene.add(sun);
 
 const pointLight = new THREE.PointLight(0xffffff);
@@ -67,11 +66,14 @@ function moveCamera() {
     camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
     camera.position.x = -10 + t * -0.02;
     camera.position.y = 10 + t * -0.02;
+    console.log(earth.position)
 }
 
 document.body.onscroll = moveCamera;
+$('#earth').on('scroll', moveCamera); 
+$('#sun').on('scroll', moveCamera); 
 
-console.log(camera)
+
 
 // Responsive
 window.addEventListener('resize', () => {
@@ -87,7 +89,10 @@ window.addEventListener('resize', () => {
 
 function animate() {
     requestAnimationFrame(animate);
-
+    
+    earth.rotation.x += 0.005;
+    earth.rotation.y += 0.00075;
+    sun.rotation.y += 0.001; 
     renderer.render(scene, camera);
 }
 
@@ -103,11 +108,6 @@ animate();
 
 
 //js
-$(window).scroll()
-
-function transform(section) {
-    const offset = window.pageYOffset;
-}
 
 
 
