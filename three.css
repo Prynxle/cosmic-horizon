@@ -1,11 +1,15 @@
 
-#bg {
+canvas {
     position: fixed;
     top: 0;
     left: 0;
 }
 
 main {
-    position: absolute
+    position:absolute
 }
+h1{
+    color: white;
+}
+
 

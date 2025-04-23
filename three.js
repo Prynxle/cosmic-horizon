@@ -7,7 +7,7 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.128/examples/jsm/
 
 // Initialize Three.js components
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(1000, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#bg'),
