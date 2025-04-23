@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 
 canvas {
     position: fixed;
@@ -10,6 +15,38 @@ main {
 }
 h1{
     color: white;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(1030%, 200%);
 }
 
+#earth_desc-left, #earth_desc-right, #earth_desc-right2 {
+    position: absolute;
+    color: white;
+    width: 300px;
+    padding: 20px;
+    background: rgba(231, 9, 9, 0.7);
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#earth_desc-left {
+    top: 800%;
+    left: 20%;
+        transform: translate(1030%, 200%);
+}
+
+#earth_desc-right {
+    top: 800%;
+    left: 20%;
+    transform: translate(40%, 200%);
+}
+
+#earth_desc-right2 {
+    top: 800%;
+    left: 20%;
+    transform: translate(40%, 70%);
+}
 
