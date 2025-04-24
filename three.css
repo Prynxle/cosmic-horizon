@@ -1,63 +1,126 @@
 * {
     margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 
 canvas {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 
 main {
-    position: absolute;    
+    position: absolute;
+    width: 100%;
+    overflow-x: scroll;
 }
-body{
+
+body {
     overflow-x: hidden;
+    background-color: #000;
+    color: #fff;
+}
+
+.planet-section {
+    min-height: 100vh;
+    width: 130%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.planet-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 h1 {
-    color: wheat;
-}
-
-.containers {
     position: absolute;
-    font-size: 14px;
-    line-height: 1.5;
+    top: 5%;
+    left: 55%;
+    color: #fff;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.planets {
-    overflow: scroll;
-    height: 100vh;
-    width: 100vw;
+.info-grid {
+    gap: 2rem;
+    padding: 50px;
 }
 
-#quadrant_1A, #quadrant_2A, #quadrant_3A {
-    color: white;
-    width: 300px;
-    padding: 20px;
-    background: rgba(231, 9, 9, 0.7);
-    border-radius: 10px;
-    margin-bottom: 20px;
+.info-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 25%;
 }
 
-#quadrant_1A {
-    position: relative;
-    top: 10%;
-    left: 10%;
-}
-#quadrant_2A {
-    position: relative;
-    top: 10%;
-    left: 10%;
+#text1 {
+    position: absolute;
+    top: 20%;
+    right: 73%;
 }
 
-#quadrant_3A {
-    position: relative;
-    top: 10%;
-    left: 250%;
+#text2 {
+    position: absolute;
+    top: 55%;
+    right: 73%;
 }
 
+#text3 {
+    position: absolute;
+    top: 20%;
+    left: 90%;
+}
 
+#text4 {
+    position: absolute;
+    top: 55%;
+    left: 90%;
+}
 
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.info-card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.info-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

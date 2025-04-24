@@ -14,22 +14,21 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(50);
 camera.position.setX(-10);
 camera.position.setY(10);
-camera.zoom = -5; // Set initial zoom level
 
 //load Earth
 const earthTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.001_baseColor.jpeg');
 const normalTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.002_baseColor.jpeg');
-const earthGeometry = new THREE.SphereGeometry(15, 32, 31);
+const earthGeometry = new THREE.SphereGeometry(25, 32, 31);
 const earthMat = new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,
 });
 
-//load Sun
-const sunTexture = new THREE.TextureLoader().load('Planets/Sun/textures/Scene_-_Root_baseColor.jpeg');
-const sunGeometry = new THREE.SphereGeometry(15, 32, 32);
-const sunMat = new THREE.MeshStandardMaterial({
-    map: sunTexture,
+//load pluto
+const plutoTexture = new THREE.TextureLoader().load('Planets/Pluto/textures/Scene_-_Root_baseColor.jpeg');
+const plutoGeometry = new THREE.SphereGeometry(20, 32, 32);
+const plutoMat = new THREE.MeshStandardMaterial({
+    map: plutoTexture,
 });
 
 //star
@@ -37,19 +36,19 @@ function addStar(){
     const geometry = new THREE.SphereGeometry(0.24, 24 , 24);
     const material = new THREE.MeshStandardMaterial( {color: 0xffffff} );
     const star = new THREE.Mesh(geometry, material);
-    const [x,y,z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(100));
+    const [x,y,z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(800));
 
     star.position.set(x,y,z);
     scene.add(star);
 }
-Array(200).fill().forEach(addStar);
+Array(800).fill().forEach(addStar);
 
 const earth = new THREE.Mesh(earthGeometry, earthMat);
 scene.add(earth);
 earth.position.set(-10, 10, 15); 
-const sun = new THREE.Mesh(sunGeometry, sunMat);
-sun.position.set(9, 29, 85); // Set the Sun's position to the center of the scene
-scene.add(sun);
+const pluto = new THREE.Mesh(plutoGeometry, plutoMat);
+pluto.position.set(9, 29, 85); 
+scene.add(pluto);
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(25, 25, 25);
@@ -59,9 +58,8 @@ scene.add(pointLight, ambientLight);
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
-    earth.rotation.x += 0.05;
-    earth.rotation.y += 0.075;
-    sun.rotation.y += 0.01; // Ensure the Sun exists before rotating
+    earth.rotation.y += 0.0075;
+    pluto.rotation.y += 0.0075; 
     camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
     camera.position.x = -10 + t * -0.02;
     camera.position.y = 10 + t * -0.02;
@@ -70,28 +68,15 @@ function moveCamera() {
 
 document.body.onscroll = moveCamera;
 $('#earth').on('scroll', moveCamera); 
-$('#sun').on('scroll', moveCamera); 
+$('#pluto').on('scroll', moveCamera); 
 
-
-
-// Responsive
-window.addEventListener('resize', () => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
-});
 
 function animate() {
     requestAnimationFrame(animate);
     
-    earth.rotation.x += 0.005;
-    earth.rotation.y += 0.00075;
-    sun.rotation.y += 0.001; 
+    // earth.rotation.x += 0.005;
+    earth.rotation.y += 0.002;
+    pluto.rotation.y += 0.002; 
     renderer.render(scene, camera);
 }
 
@@ -100,6 +85,17 @@ animate();
 
 
 
+// Responsive
+// window.addEventListener('resize', () => {
+//     const width = window.innerWidth;
+//     const height = window.innerHeight;
+
+//     camera.aspect = width / height;
+//     camera.updateProjectionMatrix();
+
+//     renderer.setSize(width, height);
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
+// });
 
 
 
