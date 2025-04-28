@@ -102,8 +102,28 @@ animate();
 
 
 
-//js
+// Scroll horizontal first until it reaches the end of the page, then scroll vertically
+$('#earth').on('wheel', function(e) {
+    if (!isAtEnd && !isAtStart) {
+        e.preventDefault();
+        
+    } 
+    e.preventDefault();
+    const delta = e.originalEvent.deltaY;
+    $(this).scrollLeft($(this).scrollLeft() + delta);
+    
+})
 
 
-
-
+// $('#pluto').on('wheel', function(e) {
+//     const isAtEnd = $(this)[0].scrollWidth - $(this).scrollLeft() <= $(this).outerWidth();
+//     const isAtStart = $(this).scrollLeft() === 0;
+//     if (!isAtEnd && !isAtStart) {
+//         e.preventDefault();
+//         $(this).scrollLeft($(this).scrollLeft() + e.originalEvent.deltaY);
+//     } 
+  
+//     const delta = e.originalEvent.deltaY;
+//     $(this).scrollLeft($(this).scrollLeft() + delta);
+    
+// })
