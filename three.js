@@ -63,7 +63,14 @@ function moveCamera() {
     camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
     camera.position.x = -10 + t * -0.02;
     camera.position.y = 10 + t * -0.02;
-    console.log(camera.position)
+    let x = $(window).innerHeight();
+    let y = $(window).scrollTop();
+    let z = $('main').height();
+    console.log(x);
+    console.log(y);
+    console.log(z);
+    console.log('answer: ', x+y);
+    
 }
 
 document.body.onscroll = moveCamera;
@@ -78,26 +85,10 @@ function animate() {
     earth.rotation.y += 0.002;
     pluto.rotation.y += 0.002; 
     renderer.render(scene, camera);
+    
 }
 
 animate();
-
-
-
-
-// Responsive
-// window.addEventListener('resize', () => {
-//     const width = window.innerWidth;
-//     const height = window.innerHeight;
-
-//     camera.aspect = width / height;
-//     camera.updateProjectionMatrix();
-
-//     renderer.setSize(width, height);
-//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
-// });
-
-
 
 
 
@@ -112,24 +103,41 @@ $('#earth').on('wheel', function (e) {
     const isAtStart = scrollLeft === 0;
     const isAtEnd = scrollLeft >= maxScrollLeft;
 
+    let y = $(window).scrollTop();
+
+
+
     if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
         // Prevent vertical scrolling and scroll horizontally
-        e.preventDefault();
-        $(this).scrollLeft(scrollLeft + delta);
+        if (y <= 0){
+            
+            e.preventDefault();
+            $(this).scrollLeft(scrollLeft + delta);
+        }
     }
 });
 
 $('#pluto').on('wheel', function (e) {
+    
     const delta = e.originalEvent.deltaY;
     const scrollLeft = $(this).scrollLeft(); 
     const maxScrollLeft = this.scrollWidth - $(this).outerWidth(); 
-
+    const maxScrollTop = this.scrollWidth -  $('html').outerHeight();
 
     const isAtStart = scrollLeft === 0;
     const isAtEnd = scrollLeft >= maxScrollLeft;
 
+
+
+    let x = $(window).innerHeight();
+    let y = $(window).scrollTop();
+    let z = $('main').height();
+    console.log('answer: ', x+y);
+
     if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
-        e.preventDefault();
-        $(this).scrollLeft(scrollLeft + delta);
+        if (x+y >=z) {
+            e.preventDefault();
+            $(this).scrollLeft(scrollLeft + delta);
+        }
     }
 });
