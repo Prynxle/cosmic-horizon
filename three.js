@@ -45,9 +45,9 @@ Array(800).fill().forEach(addStar);
 
 const earth = new THREE.Mesh(earthGeometry, earthMat);
 scene.add(earth);
-earth.position.set(-10, 10, 15); 
+earth.position.set(-9, 8, 15); 
 const pluto = new THREE.Mesh(plutoGeometry, plutoMat);
-pluto.position.set(9, 29, 85); 
+pluto.position.set(29, 48, 150); 
 scene.add(pluto);
 
 const pointLight = new THREE.PointLight(0xffffff);
@@ -63,7 +63,7 @@ function moveCamera() {
     camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
     camera.position.x = -10 + t * -0.02;
     camera.position.y = 10 + t * -0.02;
-    console.log(earth.position)
+    console.log(camera.position)
 }
 
 document.body.onscroll = moveCamera;
@@ -103,27 +103,33 @@ animate();
 
 
 // Scroll horizontal first until it reaches the end of the page, then scroll vertically
-$('#earth').on('wheel', function(e) {
-    if (!isAtEnd && !isAtStart) {
+
+$('#earth').on('wheel', function (e) {
+    const delta = e.originalEvent.deltaY; 
+    const scrollLeft = $(this).scrollLeft();
+    const maxScrollLeft = this.scrollWidth - $(this).outerWidth(); 
+
+    const isAtStart = scrollLeft === 0;
+    const isAtEnd = scrollLeft >= maxScrollLeft;
+
+    if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
+        // Prevent vertical scrolling and scroll horizontally
         e.preventDefault();
-        
-    } 
-    e.preventDefault();
+        $(this).scrollLeft(scrollLeft + delta);
+    }
+});
+
+$('#pluto').on('wheel', function (e) {
     const delta = e.originalEvent.deltaY;
-    $(this).scrollLeft($(this).scrollLeft() + delta);
-    
-})
+    const scrollLeft = $(this).scrollLeft(); 
+    const maxScrollLeft = this.scrollWidth - $(this).outerWidth(); 
 
 
-// $('#pluto').on('wheel', function(e) {
-//     const isAtEnd = $(this)[0].scrollWidth - $(this).scrollLeft() <= $(this).outerWidth();
-//     const isAtStart = $(this).scrollLeft() === 0;
-//     if (!isAtEnd && !isAtStart) {
-//         e.preventDefault();
-//         $(this).scrollLeft($(this).scrollLeft() + e.originalEvent.deltaY);
-//     } 
-  
-//     const delta = e.originalEvent.deltaY;
-//     $(this).scrollLeft($(this).scrollLeft() + delta);
-    
-// })
+    const isAtStart = scrollLeft === 0;
+    const isAtEnd = scrollLeft >= maxScrollLeft;
+
+    if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
+        e.preventDefault();
+        $(this).scrollLeft(scrollLeft + delta);
+    }
+});

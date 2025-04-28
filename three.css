@@ -127,3 +127,6 @@ h1 {
 .planet-section {
     overflow: scroll;
 }
+#earth {
+    margin-bottom: 1000px;
+}
