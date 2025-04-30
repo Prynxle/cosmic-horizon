@@ -147,7 +147,7 @@ $('#pluto').on('wheel', function (e) {
     let x = $(window).innerHeight();
     let y = $(window).scrollTop();
     let z = $('main').height();
-    console.log('answer: ', x+y);
+
 
     if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
         if (x+y >=z) {
@@ -158,20 +158,24 @@ $('#pluto').on('wheel', function (e) {
 });
 
 
-$('#pajo').click(function() {
-    if (clicked === false) {
+let clicked = false; 
+$('.pajo').click(function() {
+    if (!clicked) {
         gsap.to(camera.position, {
             x: 100,
             y: -399,
             z: 50,
             duration: 4,
-        })
-    
+        });
+
         // Disable scrolling
-        $('main').css('overflow', 'unset'); // Prevent scrolling on the body
-        $('.planet-section').css('overflow', 'unset'); // Prevent scrolling on the body
-        clicked = true;
-        
+        $('main').css('overflow', 'hidden'); // Prevent scrolling on the body
+        $('.planet-section').css('overflow', 'hidden'); // Prevent scrolling on the body
+        $('body').css('overflow', 'hidden'); // Prevent scrolling on the body
+        $('#earth_info').html(`<h3 class='pajo'>Environmental Sustainability</h3>
+                            <p>A sustainable environment is important because it ensures the long-term health and survival of ecosystems, biodiversity, and human life.</p>`);
+
+        clicked = true; // Set clicked to true
     } else {
         gsap.to(camera.position, {
             x: -10,
@@ -179,16 +183,15 @@ $('#pajo').click(function() {
             z: 50,
             duration: 2,
             onComplete: function() {
-                
+                // Re-enable scrolling
                 $('main').css('overflow', 'scroll'); // Allow scrolling on the body
                 $('.planet-section').css('overflow', 'scroll'); // Allow scrolling on the body
-                clicked = false;
-                
+                $('body').css('overflow', 'scroll'); // Allow scrolling on the body
+                clicked = false; // Reset clicked to false
             }
         });
-    }   
-    
-
+    }
+    console.log('clicked:', clicked);
 })
 
 

@@ -193,7 +193,8 @@ h1 {
     #text1, #text2, #text3, #text4, #portfolio{
         display: none !important;
     }
-
+    
+   
     /* Ensure main content cards are visible
     #ethics_text {
         display: block;
