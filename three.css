@@ -42,7 +42,7 @@ body {
 h1 {
     position: absolute;
     top: 5%;
-    left: 55%;
+    left: 75%;
     color: #ffffff;
     font-size: 3.5rem;
     margin-bottom: 3rem;
@@ -64,13 +64,12 @@ h1 {
     width: 25%;
 }
 
-
 #ethics_text {
     position: absolute;
     top: 20%;
     right: 73%;
-
 }
+
 #text1 {
     position: absolute;
     top: 20%;
@@ -90,14 +89,20 @@ h1 {
     left: 129%;
 }
 
-#text3:hover {
-    background-color: #fff;
-}
-
 #text4 {
     position: absolute;
     top: 55%;
     left: 118%;
+}
+
+#text3:hover {
+    background-color: #fff;
+}
+#ethics {
+    position: absolute;
+    width: 15%;
+    top: 20%;
+    left: 129%;
 }
 
 .info-card:hover {
@@ -142,3 +147,77 @@ h1 {
 #earth {
     margin-bottom: 1000px;
 }
+
+/* Desktop/Mobile visibility classes */
+.mobile-only {
+    display: none !important;
+}
+
+.desktop-only {
+    display: block;
+}
+
+@media screen and (max-width: 430px) {
+    .mobile-only {
+        display: block !important;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    h1 {
+        position: absolute;
+        top: 5%;
+        left: 35%;
+    }
+
+    .info-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: 120%;
+    }
+
+    #earth_info, #pluto_info {
+        position: absolute;
+        top: 650px;
+        left: 20px;
+        width: 90%;
+        z-index: 100;
+    }
+
+    #text1, #text2, #text3, #text4, #portfolio{
+        display: none !important;
+    }
+
+    /* Ensure main content cards are visible
+    #ethics_text {
+        display: block;
+    } */
+
+
+}
+
+/* ETHICS NA INFO-CARD TEMPLATE */
+/* .info-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 80%;
+    height: 120%;
+}
+
+
+#ethics_text {
+    position: absolute;
+    top: 75%;
+    right: 10%;
+
+} */
