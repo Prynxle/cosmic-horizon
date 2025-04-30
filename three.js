@@ -86,10 +86,7 @@ function moveCamera() {
     let x = $(window).innerHeight();
     let y = $(window).scrollTop();
     let z = $('main').height();
-    console.log(x);
-    console.log(y);
-    console.log(z);
-    console.log('answer: ', x+y);
+    
     
 }
 
@@ -162,24 +159,44 @@ $('#pluto').on('wheel', function (e) {
 });
 
 
+
+
+
+ let clicked = false; 
 $('#ethics').click(function() {
-    gsap.to(camera.position, {
-        x: 1000,
-        y: -599,
-        z: 50,
-        duration: 2,
-        onComplete: function() {
-            gsap.to(camera.position, {
-                x: 1000,
-                y: -599,
-                z: 50,
-                duration: 2
-            });
-        }
-    })
   
-})
+    if (clicked === false) {
+        gsap.to(camera.position, {
+            x: 1000,
+            y: -599,
+            z: 50,
+            duration: 2,
+           
+        });
+    
+        // Disable scrolling
+        $('main').css('overflow', 'unset'); // Prevent scrolling on the body
+        $('.planet-section').css('overflow', 'unset'); // Prevent scrolling on the body
+        clicked = true;
+        
+    } else {
+        gsap.to(camera.position, {
+            x: -10,
+            y: 10,
+            z: 50,
+            duration: 2,
+            onComplete: function() {
+                
+                $('main').css('overflow', 'scroll'); // Allow scrolling on the body
+                $('.planet-section').css('overflow', 'scroll'); // Allow scrolling on the body
+                clicked = false;
+                
+            }
+        });
+    }
 
 
-//ss
+
+   
+});
 
