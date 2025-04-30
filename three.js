@@ -161,17 +161,43 @@ $('#pluto').on('wheel', function (e) {
 
 
 
- let clicked = false; 
-$('#ethics').click(function() {
-    gsap.to(camera.position, {
-        x: 100,
-        y: -399,
-        z: 50,
-        duration: 4,
-    })
-  
-})
+//  let clicked = false; 
+// $('#ethics').click(function() {
+ 
+    
+// })
 
 
 //ss
-
+let clicked = false; 
+$('#ethics').click(function() {
+  
+    if (clicked === false) {
+        gsap.to(camera.position, {
+            x: 100,
+            y: -399,
+            z: 50,
+            duration: 4,
+        })
+    
+        // Disable scrolling
+        $('main').css('overflow', 'unset'); // Prevent scrolling on the body
+        $('.planet-section').css('overflow', 'unset'); // Prevent scrolling on the body
+        clicked = true;
+        
+    } else {
+        gsap.to(camera.position, {
+            x: -10,
+            y: 10,
+            z: 50,
+            duration: 2,
+            onComplete: function() {
+                
+                $('main').css('overflow', 'scroll'); // Allow scrolling on the body
+                $('.planet-section').css('overflow', 'scroll'); // Allow scrolling on the body
+                clicked = false;
+                
+            }
+        });
+    }   
+});
