@@ -20,7 +20,7 @@ camera.position.setY(10);
 const earthTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.001_baseColor.jpeg');
 const normalTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.002_baseColor.jpeg');
 
-const earthGeometry = new THREE.SphereGeometry(25, 32, 31);
+const earthGeometry = new THREE.SphereGeometry(25, 32, 31); 
 const earthMat = new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,
@@ -161,7 +161,7 @@ $('#pluto').on('wheel', function (e) {
 });
 
 
-$('#ethics').click(function() {
+$('#pajo').click(function() {
     gsap.to(camera.position, {
         x: 100,
         y: -399,
@@ -173,4 +173,27 @@ $('#ethics').click(function() {
 
 
 //ss
+
+// Function to update planet sizes based on screen width
+function updatePlanetSizes() {
+    const isMobile = window.innerWidth <= 430;
+    
+    // Update Earth size
+    earth.scale.set(
+        isMobile ? 0.5 : 1,
+        isMobile ? 0.5 : 1,
+        isMobile ? 0.5 : 1
+    );
+
+    // Update Pluto size
+    pluto.scale.set(
+        isMobile ? 0.5 : 1,
+        isMobile ? 0.5 : 1,
+        isMobile ? 0.5 : 1
+    );
+}
+
+window.addEventListener('resize', updatePlanetSizes);
+
+updatePlanetSizes();
 
