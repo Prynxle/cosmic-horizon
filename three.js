@@ -33,8 +33,8 @@ const ethicsMat = new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,
     emissiveMap: displacementTexture,
-    emissive: 0xde3023,
-    emissiveIntensity: .5,
+    emissive: 0xdc881e,
+    emissiveIntensity: .3,
 
 });
 
@@ -67,7 +67,7 @@ scene.add(pluto);
 
 const ethics = new THREE.Mesh(ethicsGeometry, ethicsMat);
 scene.add(ethics);
-ethics.position.set(1000, -599, 15);
+ethics.position.set(100, -399, 15);
 
 
 const pointLight = new THREE.PointLight(0xffffff);
@@ -80,6 +80,7 @@ function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
     earth.rotation.y += 0.0075;
     pluto.rotation.y += 0.0075; 
+    ethics.y += 0.0075;
     camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
     camera.position.x = -10 + t * -0.02;
     camera.position.y = 10 + t * -0.02;
@@ -101,15 +102,13 @@ function animate() {
     // earth.rotation.x += 0.005;
     earth.rotation.y += 0.002;
     pluto.rotation.y += 0.002; 
+    ethics.rotation.y += 0.002;
     renderer.render(scene, camera);
     
 }
 
 
 animate();
-
-
-
 
 // Scroll horizontal first until it reaches the end of the page, then scroll vertically
 
@@ -164,39 +163,15 @@ $('#pluto').on('wheel', function (e) {
 
  let clicked = false; 
 $('#ethics').click(function() {
+    gsap.to(camera.position, {
+        x: 100,
+        y: -399,
+        z: 50,
+        duration: 4,
+    })
   
-    if (clicked === false) {
-        gsap.to(camera.position, {
-            x: 1000,
-            y: -599,
-            z: 50,
-            duration: 2,
-           
-        });
-    
-        // Disable scrolling
-        $('main').css('overflow', 'unset'); // Prevent scrolling on the body
-        $('.planet-section').css('overflow', 'unset'); // Prevent scrolling on the body
-        clicked = true;
-        
-    } else {
-        gsap.to(camera.position, {
-            x: -10,
-            y: 10,
-            z: 50,
-            duration: 2,
-            onComplete: function() {
-                
-                $('main').css('overflow', 'scroll'); // Allow scrolling on the body
-                $('.planet-section').css('overflow', 'scroll'); // Allow scrolling on the body
-                clicked = false;
-                
-            }
-        });
-    }
+})
 
 
-
-   
-});
+//ss
 
