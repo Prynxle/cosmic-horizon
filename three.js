@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.128'; // or latest
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.128/examples/jsm/loaders/GLTFLoader.js';
 
+
 // Initialize Three.js components
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -18,10 +19,23 @@ camera.position.setY(10);
 //load Earth
 const earthTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.001_baseColor.jpeg');
 const normalTexture = new THREE.TextureLoader().load('Planets/earth/textures/Material.002_baseColor.jpeg');
+
 const earthGeometry = new THREE.SphereGeometry(25, 32, 31);
 const earthMat = new THREE.MeshStandardMaterial({
     map: earthTexture,
     normalMap: normalTexture,
+});
+
+
+const displacementTexture = new THREE.TextureLoader().load('Planets/earth/textures/Lava004_1K-JPG_Emission.jpg');
+const ethicsGeometry = new THREE.SphereGeometry(25, 32, 31);
+const ethicsMat = new THREE.MeshStandardMaterial({
+    map: earthTexture,
+    normalMap: normalTexture,
+    emissiveMap: displacementTexture,
+    emissive: 0xde3023,
+    emissiveIntensity: .5,
+
 });
 
 //load pluto
@@ -49,6 +63,12 @@ earth.position.set(-9, 8, 15);
 const pluto = new THREE.Mesh(plutoGeometry, plutoMat);
 pluto.position.set(29, 48, 150); 
 scene.add(pluto);
+
+
+const ethics = new THREE.Mesh(ethicsGeometry, ethicsMat);
+scene.add(ethics);
+ethics.position.set(1000, -599, 15);
+
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(25, 25, 25);
@@ -122,7 +142,6 @@ $('#pluto').on('wheel', function (e) {
     const delta = e.originalEvent.deltaY;
     const scrollLeft = $(this).scrollLeft(); 
     const maxScrollLeft = this.scrollWidth - $(this).outerWidth(); 
-    const maxScrollTop = this.scrollWidth -  $('html').outerHeight();
 
     const isAtStart = scrollLeft === 0;
     const isAtEnd = scrollLeft >= maxScrollLeft;
@@ -141,6 +160,25 @@ $('#pluto').on('wheel', function (e) {
         }
     }
 });
+
+
+$('#ethics').click(function() {
+    gsap.to(camera.position, {
+        x: 1000,
+        y: -599,
+        z: 50,
+        duration: 2,
+        onComplete: function() {
+            gsap.to(camera.position, {
+                x: 1000,
+                y: -599,
+                z: 50,
+                duration: 2
+            });
+        }
+    })
+  
+})
 
 
 //ss
