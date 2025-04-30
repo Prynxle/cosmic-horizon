@@ -43,7 +43,7 @@ h1 {
     position: absolute;
     top: 5%;
     left: 55%;
-    color: #fff;
+    color: #ffffff;
     font-size: 3.5rem;
     margin-bottom: 3rem;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
@@ -64,6 +64,13 @@ h1 {
     width: 25%;
 }
 
+
+#ethics_text {
+    position: absolute;
+    top: 20%;
+    right: 73%;
+
+}
 #text1 {
     position: absolute;
     top: 20%;
@@ -78,14 +85,19 @@ h1 {
 
 #text3 {
     position: absolute;
+    width: 15%;
     top: 20%;
-    left: 120%;
+    left: 129%;
+}
+
+#text3:hover {
+    background-color: #fff;
 }
 
 #text4 {
     position: absolute;
     top: 55%;
-    left: 120%;
+    left: 118%;
 }
 
 .info-card:hover {

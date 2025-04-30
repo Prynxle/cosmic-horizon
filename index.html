@@ -19,23 +19,37 @@
     </div>
 
     <div class="two alt-two">
-          <span>Explore the Solar System!</span>
+          <span>Discover the Solar System!</span>
       </div>
 
     <!-- main buttons -->
     <section>
         <ul>
             <li>
-                <!-- <a href="">
-                    <button id="astronaut">Astronauts</button>
-                </a> -->
-                <a href="planets.html">
-                    <button id="launch_btn">Launch</button>
-                </a>
+                <div class="carousel-container">
+                    <button class="carousel-nav prev">&#60;</button>
+                    <div class="carousel-slides">
+                        <a href="planets.html" class="slide active">
+                            <button class="launch-btn">Launch</button> 
+                        </a>
+                        <a href="zed.html" class="slide">
+                            <button class="launch-btn">Zedrick</button>
+                        </a>
+                        <a href="erick.html" class="slide">
+                            <button class="launch-btn">Erick</button>
+                        </a>
+                        <a href="ethics.html" class="slide">
+                            <button class="launch-btn">Ethics</button>
+                        </a>
+                    </div>
+                    <button class="carousel-nav next">&#62;</button>
+                </div>
             </li>
         </ul>
     </section>
 
-    <a href=""><button id="test">Ref</button></a>
+    <a href="index.html"><button id="refresh">&#8634;</button></a>
+
+    <script src="carousel.js"></script>
 </body>
 </html>
