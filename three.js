@@ -88,6 +88,7 @@ function animate() {
     
 }
 
+
 animate();
 
 
@@ -110,7 +111,6 @@ $('#earth').on('wheel', function (e) {
     if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
         // Prevent vertical scrolling and scroll horizontally
         if (y <= 0){
-            
             e.preventDefault();
             $(this).scrollLeft(scrollLeft + delta);
         }
@@ -141,3 +141,7 @@ $('#pluto').on('wheel', function (e) {
         }
     }
 });
+
+
+//ss
+
