@@ -174,6 +174,8 @@ $('body').on('click', '.pajo', function() {
         $('.planet-section').css('overflow', 'hidden'); 
         $('body').css('overflow', 'hidden'); 
         $('.info-grid').html(`
+
+                              <div id="ethicsm">
                             <h3 class='pajo'>Environmental Sustainability</h3>
                             <br>
                             <p>Why should we care about our Earth? It is the only known planet that supports life, and all our resources—air, water, food, and energy—come from its ecosystems. If we degrade Earth's systems through pollution, deforestation, overconsumption, and climate change, we undermine the very conditions that make life possible. Sustainability is about preserving these systems so that future generations can meet their needs, just as we rely on them today.</p>
@@ -183,6 +185,7 @@ $('body').on('click', '.pajo', function() {
                             <p>and protecting nature—we can protect our planet for ourselves and for future generations. Choosing sustainability isn’t just a good idea—it’s the only responsible path forward.</p>
                             <br>
                             <p>The power to change the future is in our hands. Let’s act before it’s too late.</p>
+                        </div>
                             `);
 
         scrollTo(0, 0); // Scroll to the top of the page

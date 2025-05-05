@@ -179,6 +179,10 @@ h1 {
         top: 5%;
         left: 35%;
     }
+    
+    #ethicsm {
+        overflow: scroll;
+    }
 
     .info-card {
         background: rgba(255, 255, 255, 0.1);
@@ -236,3 +240,11 @@ h1 {
     right: 10%;
 
 } */
+
+#ethicsm {
+    max-height: 100vh; 
+    overflow-y: auto; 
+    text-align: justify;
+    text-justify: inter-word; 
+     
+}
