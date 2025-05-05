@@ -201,6 +201,7 @@ $('body').on('click', '.pajo', function() {
                 $('.planet-section').css('overflow', 'scroll');
                 $('body').css('overflow', 'scroll'); 
                 clicked = false; 
+                console.log('clicked:', clicked);
              }
             }
         );
@@ -244,7 +245,7 @@ $('body').on('click', '.pajo', function() {
                             <p>Ethics</p>
                         </div>`);
     }
-    console.log('clicked:', clicked);
+    
 });
 
 
