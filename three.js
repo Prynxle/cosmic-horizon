@@ -170,10 +170,10 @@ $('body').on('click', '.pajo', function() {
         });
 
         // Disable scrolling
-        $('main').css('overflow', 'hidden'); // Prevent scrolling on the body
-        $('.planet-section').css('overflow', 'hidden'); // Prevent scrolling on the body
-        $('body').css('overflow', 'hidden'); // Prevent scrolling on the body
-        $('#earth_info').html(`<h3 class='pajo'>Environmental Sustainability</h3>
+        $('main').css('overflow', 'hidden'); 
+        $('.planet-section').css('overflow', 'hidden'); 
+        $('body').css('overflow', 'hidden'); 
+        $('.info-grid').html(`<h3 class='pajo'>Environmental Sustainability</h3>
                             <p>A sustainable environment is important because it ensures the long-term health and survival of ecosystems, biodiversity, and human life.</p>`);
 
         clicked = true; // Set clicked to true
@@ -184,11 +184,33 @@ $('body').on('click', '.pajo', function() {
             z: 50,
             duration: 2,
             onComplete: function() {
-                // Re-enable scrolling
-                $('main').css('overflow', 'scroll'); // Allow scrolling on the body
-                $('.planet-section').css('overflow', 'scroll'); // Allow scrolling on the body
-                $('body').css('overflow', 'scroll'); // Allow scrolling on the body
-                $('#earth_info').html(`<h3>Namesake</h3>
+                $('main').css('overflow', 'scroll'); 
+                $('.planet-section').css('overflow', 'scroll');
+                $('body').css('overflow', 'scroll'); 
+                $('.info-grid').html(`<!-- Desktop View Cards -->
+                        <div id="text1" class="info-card desktop-only">
+                            <h3>Namesake</h3>
+                            <p>earth was named after the Roman god of the underworld. The name was suggested by an 11-year-old schoolgirl, Venetia Burney, 
+                                who was interested in classical mythology. The name was officially adopted in 1930.</p>
+                        </div>
+                        <div id="text2" class="info-card desktop-only">
+                            <h3>Classification</h3>
+                            <p>Once considered the ninth planet, Pluto was reclassified as a dwarf planet in 2006. 
+                                It's the largest known dwarf planet in our solar system and the second-most-massive known dwarf planet after Eris.</p>
+                        </div>
+                        <div id="text4" class="info-card desktop-only">
+                            <h3>Pluto's Characteristics</h3>
+                            <p>Pluto is a complex and mysterious world with mountains, valleys, plains, craters, and glaciers. 
+                                It has a thin atmosphere that expands when it comes closer to the Sun and collapses as it moves farther away.</p>
+                        </div>
+                        <div id="text3" class="info-card desktop-only">
+                            <h3 class="pajo">Environmental Sustainability Ethics</h3>
+                        </div>
+
+
+                        <!-- Mobile View Card -->
+                        <div id="earth_info" class="info-card mobile-only">
+                            <h3>Namesake</h3>
                             <p>earth was named after the Roman god of the underworld. The name was suggested by an 11-year-old schoolgirl, Venetia Burney, 
                                 who was interested in classical mythology. The name was officially adopted in 1930.</p>
                             <br>
@@ -200,8 +222,9 @@ $('body').on('click', '.pajo', function() {
                             <p>Pluto is a complex and mysterious world with mountains, valleys, plains, craters, and glaciers. 
                                 It has a thin atmosphere that expands when it comes closer to the Sun and collapses as it moves farther away.</p>
                                 <br>
-                            <h3 class="pajo">Environmental Sustainability Ethics</h3>`);
-                clicked = false; // Reset clicked to false
+                            <h3 class="pajo">Environmental Sustainability Ethics</h3>
+                        </div>`);
+                clicked = false; 
             }
         });
     }
