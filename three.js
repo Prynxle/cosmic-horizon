@@ -176,7 +176,8 @@ $('body').on('click', '.pajo', function() {
         $('.info-grid').html(`<h3 class='pajo'>Environmental Sustainability</h3>
                             <p>A sustainable environment is important because it ensures the long-term health and survival of ecosystems, biodiversity, and human life.</p>`);
 
-        clicked = true; // Set clicked to true
+        scrollTo(0, 0); // Scroll to the top of the page
+        clicked = true; 
     } else {
         gsap.to(camera.position, {
             x: -10,
