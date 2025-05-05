@@ -159,7 +159,8 @@ $('#pluto').on('wheel', function (e) {
 
 
 let clicked = false; 
-$('.pajo').click(function() {
+// Use event delegation to handle clicks on dynamically added elements
+$('body').on('click', '.pajo', function() {
     if (!clicked) {
         gsap.to(camera.position, {
             x: 100,
@@ -187,12 +188,25 @@ $('.pajo').click(function() {
                 $('main').css('overflow', 'scroll'); // Allow scrolling on the body
                 $('.planet-section').css('overflow', 'scroll'); // Allow scrolling on the body
                 $('body').css('overflow', 'scroll'); // Allow scrolling on the body
+                $('#earth_info').html(`<h3>Namesake</h3>
+                            <p>earth was named after the Roman god of the underworld. The name was suggested by an 11-year-old schoolgirl, Venetia Burney, 
+                                who was interested in classical mythology. The name was officially adopted in 1930.</p>
+                            <br>
+                            <h3>Classification</h3>
+                            <p>Once considered the ninth planet, Pluto was reclassified as a dwarf planet in 2006. 
+                                It's the largest known dwarf planet in our solar system and the second-most-massive known dwarf planet after Eris.</p>
+                            <br>
+                            <h3>Pluto's Characteristics</h3>
+                            <p>Pluto is a complex and mysterious world with mountains, valleys, plains, craters, and glaciers. 
+                                It has a thin atmosphere that expands when it comes closer to the Sun and collapses as it moves farther away.</p>
+                                <br>
+                            <h3 class="pajo">Environmental Sustainability Ethics</h3>`);
                 clicked = false; // Reset clicked to false
             }
         });
     }
     console.log('clicked:', clicked);
-})
+});
 
 
 //ss
