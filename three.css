@@ -49,6 +49,14 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+#earth_header:hover {
+    color: rgb(91, 235, 115);
+}
+
+#pluto_header:hover {
+    color: rgb(225, 29, 29)
+}
+
 .info-grid {
     gap: 2rem;
     padding: 50px;
@@ -96,7 +104,7 @@ h1 {
 }
 
 #text3:hover {
-    background-color: #fff;
+    background-color: #adaaaa;
 }
 #ethics {
     position: absolute;
@@ -180,6 +188,12 @@ h1 {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.2);
         width: 120%;
+    }
+
+
+    #earth_header {
+        position: absolute;
+        top: 2px;
     }
 
     #earth_info, #pluto_info {

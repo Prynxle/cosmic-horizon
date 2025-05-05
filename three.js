@@ -173,8 +173,17 @@ $('body').on('click', '.pajo', function() {
         $('main').css('overflow', 'hidden'); 
         $('.planet-section').css('overflow', 'hidden'); 
         $('body').css('overflow', 'hidden'); 
-        $('.info-grid').html(`<h3 class='pajo'>Environmental Sustainability</h3>
-                            <p>A sustainable environment is important because it ensures the long-term health and survival of ecosystems, biodiversity, and human life.</p>`);
+        $('.info-grid').html(`
+                            <h3 class='pajo'>Environmental Sustainability</h3>
+                            <br>
+                            <p>Why should we care about our Earth? It is the only known planet that supports life, and all our resources—air, water, food, and energy—come from its ecosystems. If we degrade Earth's systems through pollution, deforestation, overconsumption, and climate change, we undermine the very conditions that make life possible. Sustainability is about preserving these systems so that future generations can meet their needs, just as we rely on them today.</p>
+                            <br>
+                            <p>Every breath we take, every drop of clean water we drink, and every bite of food we eat depends on a healthy planet. Yet, our environment is under threat from pollution, deforestation, and climate change, largely caused by human actions.</p> 
+                            <p>If we continue to exploit resources without thinking of the consequences, we risk destroying the very systems that keep us alive. But it’s not too late. By making more sustainable choices—like conserving energy, reducing waste, </p> 
+                            <p>and protecting nature—we can protect our planet for ourselves and for future generations. Choosing sustainability isn’t just a good idea—it’s the only responsible path forward.</p>
+                            <br>
+                            <p>The power to change the future is in our hands. Let’s act before it’s too late.</p>
+                            `);
 
         scrollTo(0, 0); // Scroll to the top of the page
         clicked = true; 
@@ -188,7 +197,11 @@ $('body').on('click', '.pajo', function() {
                 $('main').css('overflow', 'scroll'); 
                 $('.planet-section').css('overflow', 'scroll');
                 $('body').css('overflow', 'scroll'); 
-                $('.info-grid').html(`<!-- Desktop View Cards -->
+                clicked = false; 
+             }
+            }
+        );
+     $('.info-grid').html(`                        <!-- Desktop View Cards -->
                         <div id="text1" class="info-card desktop-only">
                             <h3>Namesake</h3>
                             <p>earth was named after the Roman god of the underworld. The name was suggested by an 11-year-old schoolgirl, Venetia Burney, 
@@ -205,7 +218,8 @@ $('body').on('click', '.pajo', function() {
                                 It has a thin atmosphere that expands when it comes closer to the Sun and collapses as it moves farther away.</p>
                         </div>
                         <div id="text3" class="info-card desktop-only">
-                            <h3 class="pajo">Environmental Sustainability Ethics</h3>
+                            <h3 class="pajo">Environmental Sustainability</h3>
+                            <p>Ethics</p>
                         </div>
 
 
@@ -223,11 +237,9 @@ $('body').on('click', '.pajo', function() {
                             <p>Pluto is a complex and mysterious world with mountains, valleys, plains, craters, and glaciers. 
                                 It has a thin atmosphere that expands when it comes closer to the Sun and collapses as it moves farther away.</p>
                                 <br>
-                            <h3 class="pajo">Environmental Sustainability Ethics</h3>
+                            <h3 class="pajo">Environmental Sustainability</h3>
+                            <p>Ethics</p>
                         </div>`);
-                clicked = false; 
-            }
-        });
     }
     console.log('clicked:', clicked);
 });
