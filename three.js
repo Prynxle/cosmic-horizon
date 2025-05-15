@@ -98,11 +98,11 @@ $('#pluto').on('scroll', moveCamera);
 
 
 function animate() {
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animate);//for smooth daw
     
-    // earth.rotation.x += 0.005;
+    //rotate planets with speed of 0.002
     earth.rotation.y += 0.002;
-    pluto.rotation.y += 0.002; 
+    pluto.rotation.y += 0.002;
     ethics.rotation.y += 0.002;
     renderer.render(scene, camera);
 }
@@ -114,7 +114,7 @@ animate();
 
 $('#earth').on('wheel', function (e) {
 
-    //
+    
     const delta = e.originalEvent.deltaY;  //scroll amount
     const scrollLeft = $(this).scrollLeft(); //scroll position
     const maxScrollLeft = this.scrollWidth - $(this).outerWidth();  //Max scroll width
