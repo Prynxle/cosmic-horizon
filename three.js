@@ -6,8 +6,8 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.128/examples/jsm/loa
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#bg'),
+const renderer = new THREE.WebGLRenderer({ 
+    canvas: document.querySelector('#bg'), //canvas element in HTML
 });
 
 renderer.setPixelRatio(window.devicePixelRatio); 
@@ -26,7 +26,7 @@ const earthMat = new THREE.MeshStandardMaterial({
     normalMap: normalTexture,
 });
 
-
+//load ethics
 const displacementTexture = new THREE.TextureLoader().load('Planets/earth/textures/Lava004_1K-JPG_Emission.jpg');
 const ethicsGeometry = new THREE.SphereGeometry(25, 32, 31);
 const ethicsMat = new THREE.MeshStandardMaterial({
@@ -50,12 +50,12 @@ function addStar(){
     const geometry = new THREE.SphereGeometry(0.24, 24 , 24);
     const material = new THREE.MeshStandardMaterial( {color: 0xffffff} );
     const star = new THREE.Mesh(geometry, material);
-    const [x,y,z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(800));
+    const [x,y,z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(800)); //random xyz
 
     star.position.set(x,y,z);
     scene.add(star);
 }
-Array(800).fill().forEach(addStar);
+Array(800).fill().forEach(addStar); //how many stars to add
 
 const earth = new THREE.Mesh(earthGeometry, earthMat);
 scene.add(earth);
@@ -84,16 +84,17 @@ function moveCamera() {
     camera.position.z = 50 + t * -0.07; // Adjust the multiplier for smoother movement
     camera.position.x = -10 + t * -0.02;
     camera.position.y = 10 + t * -0.02;
-    let x = $(window).innerHeight();
-    let y = $(window).scrollTop();
-    let z = $('main').height();
+    // let x = $(window).innerHeight();//
+    // let y = $(window).scrollTop();
+    // let z = $('main').height();
     
     
 }
-
+//for scrolling
 document.body.onscroll = moveCamera;
 $('#earth').on('scroll', moveCamera); 
 $('#pluto').on('scroll', moveCamera); 
+
 
 
 function animate() {
@@ -104,7 +105,6 @@ function animate() {
     pluto.rotation.y += 0.002; 
     ethics.rotation.y += 0.002;
     renderer.render(scene, camera);
-    
 }
 
 
@@ -113,18 +113,20 @@ animate();
 // Scroll horizontal first until it reaches the end of the page, then scroll vertically
 
 $('#earth').on('wheel', function (e) {
-    const delta = e.originalEvent.deltaY; 
-    const scrollLeft = $(this).scrollLeft();
-    const maxScrollLeft = this.scrollWidth - $(this).outerWidth(); 
 
-    const isAtStart = scrollLeft === 0;
-    const isAtEnd = scrollLeft >= maxScrollLeft;
+    //
+    const delta = e.originalEvent.deltaY;  //scroll amount
+    const scrollLeft = $(this).scrollLeft(); //scroll position
+    const maxScrollLeft = this.scrollWidth - $(this).outerWidth();  //Max scroll width
 
-    let y = $(window).scrollTop();
+    const isAtStart = scrollLeft === 0; //Check if at start
+    const isAtEnd = scrollLeft >= maxScrollLeft; //Check if at end
+
+    let y = $(window).scrollTop(); //scroll position
 
 
 
-    if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
+    if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) { // If not at the end or start, scroll horizontally
         // Prevent vertical scrolling and scroll horizontally
         if (y <= 0){
             e.preventDefault();
@@ -134,7 +136,7 @@ $('#earth').on('wheel', function (e) {
 });
 
 $('#pluto').on('wheel', function (e) {
-    
+     //same as earth
     const delta = e.originalEvent.deltaY;
     const scrollLeft = $(this).scrollLeft(); 
     const maxScrollLeft = this.scrollWidth - $(this).outerWidth(); 
@@ -144,25 +146,27 @@ $('#pluto').on('wheel', function (e) {
 
 
 
-    let x = $(window).innerHeight();
-    let y = $(window).scrollTop();
-    let z = $('main').height();
+    let x = $(window).innerHeight(); //height of window
+    let y = $(window).scrollTop(); //scroll position
+    let z = $('main').height(); //height of main
 
 
     if ((!isAtEnd && delta > 0) || (!isAtStart && delta < 0)) {
-        if (x+y >=z) {
+        if (x+y >=z) { //if at the bottom of the page, scroll horizontally
             e.preventDefault();
-            $(this).scrollLeft(scrollLeft + delta);
+            $(this).scrollLeft(scrollLeft + delta);//scroll horizontally
         }
     }
 });
 
 
-let clicked = false; 
+let clicked = false; // needed to track click state
+
+
 // Use event delegation to handle clicks on dynamically added elements
-$('body').on('click', '.pajo', function() {
+$('body').on('click', '.pajo', function() { 
     if (!clicked) {
-        gsap.to(camera.position, {
+        gsap.to(camera.position, { //camera positon will change to this at duration of 4 seconds
             x: 100,
             y: -399,
             z: 50,
@@ -186,7 +190,7 @@ $('body').on('click', '.pajo', function() {
                             <br>
                             <p>The power to change the future is in our hands. Let’s act before it’s too late.</p>
                         </div>
-                            `);
+                            `); //ethics text
 
         scrollTo(0, 0); // Scroll to the top of the page
         clicked = true; 
@@ -197,11 +201,11 @@ $('body').on('click', '.pajo', function() {
             z: 50,
             duration: 2,
             onComplete: function() {
+                // Re-enable scrolling
                 $('main').css('overflow', 'scroll'); 
                 $('.planet-section').css('overflow', 'scroll');
                 $('body').css('overflow', 'scroll'); 
-                clicked = false; 
-                console.log('clicked:', clicked);
+                clicked = false;
              }
             }
         );
@@ -243,13 +247,11 @@ $('body').on('click', '.pajo', function() {
                                 <br>
                             <h3 class="pajo">Environmental Sustainability</h3>
                             <p>Ethics</p>
-                        </div>`);
+                        </div>`); // change to original
     }
     
 });
 
-
-//ss
 
 // Function to update planet sizes based on screen width
 function updatePlanetSizes() {
